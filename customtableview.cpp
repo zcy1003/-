@@ -6,7 +6,10 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QStyledItemDelegate>
+<<<<<<< HEAD
 #include <QScrollBar>
+=======
+>>>>>>> ce9fb6ddc1927c2616384c71ce410c14905dcf1a
 
 
 /*class CustomDelegate : public QStyledItemDelegate
@@ -52,12 +55,15 @@ CustomTableView::CustomTableView(QWidget *parent)
     //CustomDelegate *delegate = new CustomDelegate(this);
     //setItemDelegateForColumn(1, delegate);
 
+<<<<<<< HEAD
     // 假设 CustomPainter *painter 是您的自定义绘图类实例
     connect(this->horizontalScrollBar(), &QScrollBar::valueChanged,
             this, &CustomTableView::onScrollBarsValueChanged);
     connect(this->verticalScrollBar(), &QScrollBar::valueChanged,
             this, &CustomTableView::onScrollBarsValueChanged);
 
+=======
+>>>>>>> ce9fb6ddc1927c2616384c71ce410c14905dcf1a
     // 创建模型   QTableView设置行数与列数是下面这样设置的，setRowCount是QTableWidget设置的，不适应于QTableView  2024.3.29 13:36
     QStandardItemModel* model = new QStandardItemModel(10, 2, this);
     // 设置模型
@@ -75,6 +81,7 @@ CustomTableView::CustomTableView(QWidget *parent)
 
 }
 
+<<<<<<< HEAD
 void CustomTableView::onScrollBarsValueChanged()
 {
     // 假设矩形原本的全局坐标为 rectGlobalPos
@@ -94,6 +101,8 @@ void CustomTableView::onScrollBarsValueChanged()
     //painter->drawRectangleAt(rectScreenPos);
 }
 
+=======
+>>>>>>> ce9fb6ddc1927c2616384c71ce410c14905dcf1a
 void CustomTableView::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
