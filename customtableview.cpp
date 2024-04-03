@@ -6,6 +6,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QStyledItemDelegate>
+#include <QScrollBar>
 
 
 /*class CustomDelegate : public QStyledItemDelegate
@@ -51,6 +52,12 @@ CustomTableView::CustomTableView(QWidget *parent)
     //CustomDelegate *delegate = new CustomDelegate(this);
     //setItemDelegateForColumn(1, delegate);
 
+    // 假设 CustomPainter *painter 是您的自定义绘图类实例
+    connect(this->horizontalScrollBar(), &QScrollBar::valueChanged,
+            this, &CustomTableView::onScrollBarsValueChanged);
+    connect(this->verticalScrollBar(), &QScrollBar::valueChanged,
+            this, &CustomTableView::onScrollBarsValueChanged);
+
     // 创建模型   QTableView设置行数与列数是下面这样设置的，setRowCount是QTableWidget设置的，不适应于QTableView  2024.3.29 13:36
     QStandardItemModel* model = new QStandardItemModel(10, 2, this);
     // 设置模型
@@ -66,6 +73,25 @@ CustomTableView::CustomTableView(QWidget *parent)
     // 设置默认行高
     verticalHeader()->setDefaultSectionSize(50);
 
+}
+
+void CustomTableView::onScrollBarsValueChanged()
+{
+    // 假设矩形原本的全局坐标为 rectGlobalPos
+    //QPointF rectGlobalPos = ...;  // 这里设置矩形在表格全局坐标系中的位置
+
+    // 获取滚动条的新值
+    int horizontalScrollBarValue = this->horizontalScrollBar()->value();
+    int verticalScrollBarValue = this->verticalScrollBar()->value();
+
+    // 计算矩形相对于视口的偏移量
+    QPointF scrollOffset(horizontalScrollBarValue, verticalScrollBarValue);
+
+    // 计算矩形在屏幕上的新位置
+    //QPointF rectScreenPos = rectGlobalPos - scrollOffset;
+
+    // 重绘矩形
+    //painter->drawRectangleAt(rectScreenPos);
 }
 
 void CustomTableView::mousePressEvent(QMouseEvent *event)

@@ -15,6 +15,9 @@ class CustomTableView : public QTableView
 public:
     explicit CustomTableView(QWidget *parent = nullptr);
 
+private:
+    void onScrollBarsValueChanged();
+
 signals:
 
 protected:
